@@ -16,10 +16,10 @@ endif
 ifndef YOUTUBE_VERSION
 YOUTUBE_VERSION = 19.25.4
 endif
-ifndef UYOU_VERSION
-UYOU_VERSION = 4.0.1
+ifndef YTLITE_VERSION
+YTLITE_VERSION = 4.0.1
 endif
-PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
+PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(YTLITE_VERSION)
 
 INSTALL_TARGET_PROCESSES = YouTube
 TWEAK_NAME = YTLitePlus
@@ -45,27 +45,27 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 REMOVE_EXTENSIONS = 1
 CODESIGN_IPA = 0
 
-UYOU_PATH = Tweaks/YTLite
-UYOU_DEB = $(UYOU_PATH)/com.dvntm.ytlite_$(UYOU_VERSION)_iphoneos-arm.deb
-UYOU_DYLIB = $(UYOU_PATH)/Library/MobileSubstrate/DynamicLibraries/YTLite.dylib
-UYOU_BUNDLE = $(UYOU_PATH)/Library/Application\ Support/YTLite.bundle
+YTLITE_PATH = Tweaks/YTLite
+YTLITE_DEB = $(YTLITE_PATH)/com.dvntm.ytlite_$(YTLITE_VERSION)_iphoneos-arm.deb
+YTLITE_DYLIB = $(YTLITE_PATH)/Library/MobileSubstrate/DynamicLibraries/YTLite.dylib
+YTLITE_BUNDLE = $(YTLITE_PATH)/Library/Application\ Support/YTLite.bundle
 
 internal-clean::
-	@rm -rf $(UYOU_PATH)/*
+	@rm -rf $(YTLITE_PATH)/*
 
 ifneq ($(JAILBROKEN),1)
 before-all::
-	@if [[ ! -f $(UYOU_DEB) ]]; then \
-		rm -rf $(UYOU_PATH)/*; \
+	@if [[ ! -f $(YTLITE_DEB) ]]; then \
+		rm -rf $(YTLITE_PATH)/*; \
 		$(PRINT_FORMAT_BLUE) "Downloading uYou"; \
 	fi
 before-all::
-	@if [[ ! -f $(UYOU_DEB) ]]; then \
- 		curl -s https://raw.githubusercontent.com/hiepvk/ipa/main/com.dvntm.ytlite_$(UYOU_VERSION)_iphoneos-arm.deb -o $(UYOU_DEB); \
+	@if [[ ! -f $(YTLITE_DEB) ]]; then \
+ 		curl -s https://raw.githubusercontent.com/hiepvk/ipa/main/com.dvntm.ytlite_$(YTLITE_VERSION)_iphoneos-arm.deb -o $(YTLITE_DEB); \
  	fi; \
-	if [[ ! -f $(UYOU_DYLIB) || ! -d $(UYOU_BUNDLE) ]]; then \
-		tar -xf Tweaks/YTLite/com.dvntm.ytlite_$(UYOU_VERSION)_iphoneos-arm.deb -C Tweaks/YTLite; tar -xf Tweaks/YTLite/data.tar* -C Tweaks/YTLite; \
-		if [[ ! -f $(UYOU_DYLIB) || ! -d $(UYOU_BUNDLE) ]]; then \
+	if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
+		tar -xf Tweaks/YTLite/com.dvntm.ytlite_$(YTLITE_VERSION)_iphoneos-arm.deb -C Tweaks/YTLite; tar -xf Tweaks/YTLite/data.tar* -C Tweaks/YTLite; \
+		if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
 			$(PRINT_FORMAT_ERROR) "Failed to extract uYou"; exit 1; \
 		fi; \
 	fi;
