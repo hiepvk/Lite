@@ -22,11 +22,11 @@ endif
 PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
 
 INSTALL_TARGET_PROCESSES = YouTube
-TWEAK_NAME = uYouPlus
+TWEAK_NAME = YTLitePlus
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
-$(TWEAK_NAME)_FILES := Tweaks.x
+$(TWEAK_NAME)_FILES := $(wildcard Sources/*.xm) $(wildcard Sources/*.x)
 $(TWEAK_NAME)_FRAMEWORKS = UIKit Security
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc -DTWEAK_VERSION=\"$(PACKAGE_VERSION)\" -Wno-module-import-in-extern-c
 $(TWEAK_NAME)_INJECT_DYLIBS = Tweaks/YTLite/Library/MobileSubstrate/DynamicLibraries/YTLite.dylib $(THEOS_OBJ_DIR)/libFLEX.dylib $(THEOS_OBJ_DIR)/iSponsorBlock.dylib $(THEOS_OBJ_DIR)/YouTubeDislikesReturn.dylib $(THEOS_OBJ_DIR)/YouPiP.dylib $(THEOS_OBJ_DIR)/YTABConfig.dylib $(THEOS_OBJ_DIR)/YTUHD.dylib $(THEOS_OBJ_DIR)/DontEatMyContent.dylib $(THEOS_OBJ_DIR)/YTVideoOverlay.dylib $(THEOS_OBJ_DIR)/YouMute.dylib $(THEOS_OBJ_DIR)/YouQuality.dylib $(THEOS_OBJ_DIR)/YTClassicVideoQuality.dylib $(THEOS_OBJ_DIR)/NoYTPremium.dylib $(THEOS_OBJ_DIR)/YoutubeSpeed.dylib $(THEOS_OBJ_DIR)/YouTubeX.dylib
