@@ -1,6 +1,6 @@
 export TARGET = iphone:clang:latest:14.0
 export ARCHS = arm64
-export XCODEFLAGS = DYLIB_INSTALL_NAME_BASE=/Library/Frameworks BUILD_LIBRARY_FOR_DISTRIBUTION=YES ARCHS="$(ARCHS)"
+
 export ADDITIONAL_CFLAGS = -I$(THEOS_PROJECT_DIR)/Tweaks/RemoteLog -I$(THEOS_PROJECT_DIR)/Tweaks
 
 ifneq ($(JAILBROKEN),1)
