@@ -1,9 +1,6 @@
 export TARGET = iphone:clang:latest:14.0
 export ARCHS = arm64
 
-
-export ADDITIONAL_CFLAGS = -I$(THEOS_PROJECT_DIR)/Tweaks/RemoteLog -I$(THEOS_PROJECT_DIR)/Tweaks
-
 ifneq ($(JAILBROKEN),1)
 export DEBUGFLAG = -ggdb -Wno-unused-command-line-argument -L$(THEOS_OBJ_DIR)
 MODULES = jailed
@@ -64,6 +61,5 @@ before-all::
 		if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
 			$(PRINT_FORMAT_ERROR) "Failed to extract YTLite"; exit 1; \
 		fi; \
-	fi;
-else
+	fi
 endif
