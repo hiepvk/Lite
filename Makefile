@@ -42,7 +42,7 @@ include $(THEOS_MAKE_PATH)/aggregate.mk
 endif
 include $(THEOS_MAKE_PATH)/tweak.mk
 
-REMOVE_EXTENSIONS = 1
+REMOVE_EXTENSIONS = 0
 CODESIGN_IPA = 0
 
 YTLITE_PATH = Tweaks/YTLite
