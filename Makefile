@@ -57,7 +57,7 @@ ifneq ($(JAILBROKEN),1)
 before-all::
 	@if [[ ! -f $(YTLITE_DEB) ]]; then \
 		rm -rf $(YTLITE_PATH)/*; \
-		$(PRINT_FORMAT_BLUE) "Downloading uYou"; \
+		$(PRINT_FORMAT_BLUE) "Downloading YTLite"; \
 	fi
 before-all::
 	@if [[ ! -f $(YTLITE_DEB) ]]; then \
@@ -66,10 +66,10 @@ before-all::
 	if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
 		tar -xf Tweaks/YTLite/com.dvntm.ytlite_$(YTLITE_VERSION)_iphoneos-arm.deb -C Tweaks/YTLite; tar -xf Tweaks/YTLite/data.tar* -C Tweaks/YTLite; \
 		if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
-			$(PRINT_FORMAT_ERROR) "Failed to extract uYou"; exit 1; \
+			$(PRINT_FORMAT_ERROR) "Failed to extract YTLite"; exit 1; \
 		fi; \
 	fi;
 else
 before-package::
-	@mkdir -p $(THEOS_STAGING_DIR)/Library/Application\ Support; cp -r Localizations/uYouPlus.bundle $(THEOS_STAGING_DIR)/Library/Application\ Support/
+	@mkdir -p $(THEOS_STAGING_DIR)/Library/Application\ Support
 endif
