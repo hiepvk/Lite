@@ -6,8 +6,8 @@ name: Build and Release uYouPlus
 on:
   workflow_dispatch:
     inputs:
-      uyou_version:
-        description: "The version of uYou"
+      ytlite_version:
+        description: "The version of YTLite"
         default: "4.0.1"
         required: true
         type: string
@@ -132,7 +132,7 @@ jobs:
 
         env:
           THEOS: ${{ github.workspace }}/theos
-          UYOU_VERSION: ${{ inputs.uyou_version }}
+          YTLITE_VERSION: ${{ inputs.ytlite_version }}
           BUNDLE_ID: ${{ inputs.bundle_id }}
           APP_NAME: ${{ inputs.app_name }}
 
@@ -140,10 +140,10 @@ jobs:
         if: ${{ inputs.upload_artifact }}
         uses: actions/upload-artifact@v4.3.0
         env:
-          UYOU_VERSION: ${{ inputs.uyou_version }}
+          YTLITE_VERSION: ${{ inputs.ytlite_version }}
           YOUTUBE_VERSION: ${{ steps.prepare_youtube.outputs.youtube_version }}
         with:
-          name: uYouPlus_${{ env.YOUTUBE_VERSION }}_${{ env.UYOU_VERSION }}
+          name: uYouPlus_${{ env.YOUTUBE_VERSION }}_${{ env.YTLITE_VERSION }}
           path: ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
           if-no-files-found: error
 
@@ -152,11 +152,11 @@ jobs:
         uses: qnblackcat/action-gh-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UYOU_VERSION: ${{ inputs.uyou_version }}
+          YTLITE_VERSION: ${{ inputs.ytlite_version }}
           YOUTUBE_VERSION: ${{ steps.prepare_youtube.outputs.youtube_version }}
           DRAFT: ${{ inputs.create_release }}
         with:
-          tag_name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
-          name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
+          tag_name: v${{ env.YOUTUBE_VERSION }}-${{ env.YTLITE_VERSION }}-(${{ github.run_number }})
+          name: v${{ env.YOUTUBE_VERSION }}-${{ env.YTLITE_VERSION }}-(${{ github.run_number }})
           files: main/packages/*.ipa
           draft: ${{ env.DRAFT }}
